@@ -1,0 +1,391 @@
+@import url('https://fonts.cdnfonts.com/css/futura-black');
+body {
+  font: "Poppins", normal;
+  width: 80%;
+  background-color: #191919;
+  color: rgb(0, 0, 0);
+}
+
+#myCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  cursor: none;
+  pointer-events: none;
+}
+/*navbar*/
+
+/* .sidenav {
+    font-weight: bold;
+    height: 100%;
+    width: 45%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #e7f1f0;
+    transition: 2.5s;
+    padding-top: 2%;
+    text-transform: uppercase;
+    background-size: 10%;
+    background-position: bottom;
+    background-position-x: left;  
+    transition: width 1000s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+  }
+  
+  .sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+  }
+  .sidenav .nav__wrap{
+    font-size: 20%;
+      margin-left: 20%;
+      padding: 5% 0%;
+      margin: 0% 15%;
+  }
+  .sidenav .nav__list{
+    border-bottom: 1px solid #A68260;
+    padding: 6% 0%;
+    text-align: center;
+  }
+  .sidenav .nav__list:first-child{
+    border-bottom:none; 
+  }
+  .sidenav .nav__list:last-child{
+    border-bottom:none; 
+  }
+  .sidenav .nav__list_diff{
+    padding: 6% 0%;
+  }
+  .sidenav .nav__list_closebtn{
+    padding: 6% 0%;
+  }
+  .sidenav a:hover {
+    background-color: #191919;
+    color:  aqua;
+  }
+  .sidenav .closebtn {
+    font-size: 40px;
+  }
+  .sidenav_open{
+    width: 450px;
+  } */
+
+/* ------------------------------------ */
+
+.content {
+  margin-top: 10%;
+  color: #ffffff;
+  font-weight: bolder;
+  font-size: 80px;
+}
+
+.G{
+  font-family: futura black; 
+  font-size: 80px; 
+  font-stretch: expanded;
+}
+
+/* side menu pointer open/close */
+svg:hover {
+  color: aqua;
+  transform: scale(1.3);
+  transition: transform 0.7s ease;
+}
+
+.logo-container {
+  margin-top: 5%;
+  width: 220px;
+  height: 137px;
+  margin-left: 4rem;
+  background: url("../../assets/logo.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 15%;
+  transition: filter 0.8s ease;
+  &:hover {
+    filter: brightness(2.0);
+    transform: scale(1.1);
+    transition: transform 0.7s ease;
+  }
+}
+
+:host {
+  color: #ffffff;
+}
+
+.menu-trigger {
+  cursor: pointer;
+  padding: 10px;
+  color: rgb(255, 255, 255);
+}
+.menu-close {
+  cursor: pointer;
+  text-align: right;
+  padding: 10px 10px 0 0;
+}
+
+.side-menu {
+  color: rgb(255, 255, 255);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  background: #262525 !important;
+}
+
+.menu-item {
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #dcdcdc;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10%;
+  &:last-child {
+    border-bottom: none;
+  }
+  &:hover {
+    color: aqua;
+    transform: scale(1.0);
+    transition: transform 0.7s ease;
+  }
+}
+
+.gg-push-chevron-right-o {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-radius: 100px;
+}
+.gg-push-chevron-right-o::after,
+.gg-push-chevron-right-o::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  border-right: 2px solid;
+  top: 5px;
+  right: 5px;
+}
+.gg-push-chevron-right-o::after {
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid;
+  transform: rotate(-45deg);
+  right: 9px;
+  top: 6px;
+}
+
+.gg-push-chevron-left-o {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-radius: 100px;
+}
+.gg-push-chevron-left-o::after,
+.gg-push-chevron-left-o::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  border-left: 2px solid;
+  top: 5px;
+  left: 5px;
+}
+.gg-push-chevron-left-o::after {
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid;
+  transform: rotate(45deg);
+  left: 9px;
+  top: 6px;
+}
+
+/* Card Animations*/
+body {
+  background: #212121;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  height: 300px;
+  width: 237px;
+}
+.card:nth-child(2) {
+  filter: hue-rotate(300deg) brightness(1.3);
+}
+.card:nth-child(3) {
+  filter: hue-rotate(200deg) brightness(1.5);
+}
+.card:nth-child(4) {
+  filter: hue-rotate(60deg) brightness(3);
+}
+.card .boxshadow {
+  position: absolute;
+  height: 102.5%;
+  width: 100%;
+  border: 3px solid cyan;
+  transform: scale(1.3);
+  box-shadow: cyan 0px 30px 70px 0px;
+  transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.card .main {
+  width: 230px;
+  height: 300px;
+  overflow: hidden;
+  background: cyan;
+  background: linear-gradient(0deg, #ffffff 0%, cyan 60%, #ffffff 100%);
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 40px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 40px 100%, 0 calc(100% - 40px));
+  box-shadow: cyan 0px 7px 29px 0px;
+  transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.card .main .top {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 0px;
+  height: 0px;
+  z-index: 2;
+  border-top: 115px solid black;
+  border-left: 115px solid transparent;
+  border-right: 115px solid transparent;
+  transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.card .main .side {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  transform: translateX(-50%);
+  height: 100%;
+  background: black;
+  clip-path: polygon(0% 0%, 50% 0, 95% 45%, 100% 100%, 0% 100%);
+  transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 1s;
+}
+.card .main .left {
+  left: 0;
+}
+.card .main .right {
+  right: 0;
+  transform: translateX(50%) scale(-1, 1);
+}
+.card .main .title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 70px;
+  font-weight: bold;
+  font-size: 25px;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.2s ease-out 0s;
+}
+.card .main .button-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.card .main .button-container .button {
+  position: absolute;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  clip-path: polygon(0 0, 100% 0, 81% 100%, 21% 100%);
+  background: black;
+  border: none;
+  color: white;
+  display: grid;
+  place-content: center;
+  transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.card .main .button-container .button .svg {
+  width: 15px;
+  transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.card .main .button-container .button:nth-child(1) {
+  bottom: 300px;
+  transition-delay: 0.4s;
+}
+.card .main .button-container .button:nth-child(2) {
+  bottom: 300px;
+  transition-delay: 0.6s;
+}
+.card .main .button-container .button:nth-child(3) {
+  bottom: 300px;
+  transition-delay: 0.8s;
+}
+.card .main .button-container .button:hover .svg {
+  transform: scale(1.2);
+}
+.card .main .button-container .button:active .svg {
+  transform: scale(0.7);
+}
+
+.card:hover .main {
+  transform: scale(1.1);
+}
+.card:hover .main .top {
+  top: -50px;
+}
+.card:hover .main .left {
+  left: -50px;
+  transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s;
+}
+.card:hover .main .right {
+  right: -50px;
+  transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.1s;
+}
+.card:hover .main .title {
+  opacity: 1;
+  transition: all 0.2s ease-out 1.3s;
+}
+.card:hover .main .button-container .button:nth-child(1) {
+  bottom: 80px;
+  transition-delay: 0.8s;
+}
+.card:hover .main .button-container .button:nth-child(2) {
+  bottom: 40px;
+  transition-delay: 0.6s;
+}
+.card:hover .main .button-container .button:nth-child(3) {
+  bottom: 0;
+  transition-delay: 0.4s;
+}
+
+.image {
+  width: 100px; 
+  height: 100px; 
+  background-color: black; 
+  border-radius: 50%;
+}
+
+/* ----------------------------- */
