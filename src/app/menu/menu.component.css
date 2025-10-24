@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/futura-black');
+@import url("https://fonts.cdnfonts.com/css/futura-black");
 body {
   font: "Poppins", normal;
   width: 80%;
@@ -17,70 +17,6 @@ body {
   pointer-events: none;
 }
 /*navbar*/
-
-/* .sidenav {
-    font-weight: bold;
-    height: 100%;
-    width: 45%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #e7f1f0;
-    transition: 2.5s;
-    padding-top: 2%;
-    text-transform: uppercase;
-    background-size: 10%;
-    background-position: bottom;
-    background-position-x: left;  
-    transition: width 1000s ease-in-out;
-    transition: opacity 0.5s ease-in-out;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 1;
-  }
-  
-  .sidenav a {
-    text-decoration: none;
-    font-size: 25px;
-    color: #000000;
-    display: block;
-    transition: 0.3s;
-  }
-  .sidenav .nav__wrap{
-    font-size: 20%;
-      margin-left: 20%;
-      padding: 5% 0%;
-      margin: 0% 15%;
-  }
-  .sidenav .nav__list{
-    border-bottom: 1px solid #A68260;
-    padding: 6% 0%;
-    text-align: center;
-  }
-  .sidenav .nav__list:first-child{
-    border-bottom:none; 
-  }
-  .sidenav .nav__list:last-child{
-    border-bottom:none; 
-  }
-  .sidenav .nav__list_diff{
-    padding: 6% 0%;
-  }
-  .sidenav .nav__list_closebtn{
-    padding: 6% 0%;
-  }
-  .sidenav a:hover {
-    background-color: #191919;
-    color:  aqua;
-  }
-  .sidenav .closebtn {
-    font-size: 40px;
-  }
-  .sidenav_open{
-    width: 450px;
-  } */
-
 /* ------------------------------------ */
 
 .content {
@@ -90,9 +26,9 @@ body {
   font-size: 80px;
 }
 
-.G{
-  font-family: futura black; 
-  font-size: 80px; 
+.G {
+  font-family: futura black;
+  font-size: 80px;
   font-stretch: expanded;
 }
 
@@ -113,7 +49,7 @@ svg:hover {
   border-radius: 15%;
   transition: filter 0.8s ease;
   &:hover {
-    filter: brightness(2.0);
+    filter: brightness(2);
     transform: scale(1.1);
     transition: transform 0.7s ease;
   }
@@ -155,7 +91,7 @@ svg:hover {
   }
   &:hover {
     color: aqua;
-    transform: scale(1.0);
+    transform: scale(1);
     transition: transform 0.7s ease;
   }
 }
@@ -265,7 +201,15 @@ body {
   background: cyan;
   background: linear-gradient(0deg, #ffffff 0%, cyan 60%, #ffffff 100%);
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 40px, 100% calc(100% - 40px), calc(100% - 40px) 100%, 40px 100%, 0 calc(100% - 40px));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 40px,
+    100% calc(100% - 40px),
+    calc(100% - 40px) 100%,
+    40px 100%,
+    0 calc(100% - 40px)
+  );
   box-shadow: cyan 0px 7px 29px 0px;
   transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
@@ -382,10 +326,122 @@ body {
 }
 
 .image {
-  width: 100px; 
-  height: 100px; 
-  background-color: black; 
+  width: 100px;
+  height: 100px;
+  background-color: black;
   border-radius: 50%;
 }
 
 /* ----------------------------- */
+
+.wrap {
+  margin-top: 6rem;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  /* border-top: solid 3px #999; */
+  /* border-bottom: solid 3px #999; */
+
+  /* background-image: linear-gradient(
+    135deg,
+    #ccc 25%,
+    #ddd 25%,
+    #ddd 50%,
+    #ccc 50%,
+    #ccc 75%,
+    #ddd 75%,
+    #ddd 100%
+  ); */
+  background-size: 80px 80px;
+  animation: bganim 3s linear 2s infinite;
+}
+
+@keyframes bganim {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: 80px;
+  }
+}
+
+.cube {
+  margin: auto;
+  position: relative;
+  height: 200px;
+  width: 200px;
+  transform-style: preserve-3d;
+}
+
+.cube div {
+  position: absolute;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  background-color: #000;
+  border: solid 1px #eee;
+  color: #fff;
+  font: 12px verdana;
+  text-align: center;
+  transition: transform 0.2s ease-in;
+}
+
+.cube div:hover {
+  background-color: cyan;
+}
+
+.cube-front {
+  transform: translateZ(100px);
+}
+.cube-back {
+  transform: translateZ(-100px) rotateY(180deg);
+}
+.cube-right {
+  transform: rotateY(-270deg) translateX(100px);
+  transform-origin: top right;
+}
+.cube-left {
+  transform: rotateY(270deg) translateX(-100px);
+  transform-origin: center left;
+}
+.cube-top {
+  transform: rotateX(-270deg) translateY(-100px);
+  transform-origin: top center;
+}
+.cube-bottom {
+  transform: rotateX(270deg) translateY(100px);
+  transform-origin: bottom center;
+}
+
+.cube {
+  animation: rotate 20s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.wrap:hover .cube-front {
+  transform: translateZ(200px);
+}
+.wrap:hover .cube-back {
+  transform: translateZ(-200px) rotateY(180deg);
+}
+.wrap:hover .cube-right {
+  transform: rotateY(-270deg) translateZ(100px) translateX(100px);
+}
+.wrap:hover .cube-left {
+  transform: rotateY(270deg) translateZ(100px) translateX(-100px);
+}
+.wrap:hover .cube-top {
+  transform: rotateX(-270deg) translateZ(100px) translateY(-100px);
+}
+.wrap:hover .cube-bottom {
+  transform: rotateX(270deg) translateZ(100px) translateY(100px);
+}
