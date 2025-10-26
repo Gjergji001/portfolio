@@ -1,0 +1,22 @@
+<section class="services-container">
+  <h2 class="section-title">My Services</h2>
+  <div class="skills-grid">
+    <div class="skill-item" *ngFor="let skill of skills">
+      <div class="skill-header">
+        <span class="skill-name">{{ skill.name }}</span>
+        <span class="skill-percent">{{ skill.percent }}%</span>
+      </div>
+
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          [style.width.%]="skill.animate ? skill.percent : 0"
+        ></div>
+      </div>
+
+      <p class="skill-years">
+        {{ skill.years }} year{{ skill.years > 1 ? 's' : '' }} experience
+      </p>
+    </div>
+  </div>
+</section>

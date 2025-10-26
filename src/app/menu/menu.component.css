@@ -6,6 +6,7 @@ body {
   color: rgb(0, 0, 0);
 }
 
+/* Styling for canvas */
 #myCanvas {
   position: fixed;
   top: 0;
@@ -16,9 +17,8 @@ body {
   cursor: none;
   pointer-events: none;
 }
-/*navbar*/
-/* ------------------------------------ */
 
+/* /*navbar */
 .content {
   margin-top: 10%;
   color: #ffffff;
@@ -332,10 +332,42 @@ body {
   border-radius: 50%;
 }
 
+/* Default cube text color */
+.cube-text {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+/* When hovering a specific cube face, change its text color */
+.cube-front:hover .cube-text {
+  color: black;
+}
+
+.cube-back:hover .cube-text {
+  color: black;
+}
+
+.cube-top:hover .cube-text {
+  color: black;
+}
+
+.cube-bottom:hover .cube-text {
+  color: black;
+}
+
+.cube-left:hover .cube-text {
+  color: black;
+}
+
+.cube-right:hover .cube-text {
+  color: black;
+}
+
 /* ----------------------------- */
 
 .wrap {
-  margin-top: 6rem;
+  margin-top: 15rem;
+  margin-bottom: 10rem;
   perspective: 1000px;
   perspective-origin: 50% 50%;
   /* border-top: solid 3px #999; */
@@ -444,4 +476,69 @@ body {
 }
 .wrap:hover .cube-bottom {
   transform: rotateX(270deg) translateZ(100px) translateY(100px);
+}
+
+/* ----------------------------------------- */
+.services-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #b9b9b9;
+  padding: 2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floatServiceCard 6s ease-in-out infinite;
+}
+
+/* Floating animation for the card */
+@keyframes floatServiceCard {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+  }
+  50% {
+    transform: translateY(-6px);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+  }
+}
+
+.services-right h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #00eaff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.services-right p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.services-right ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+}
+
+.services-right ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Hover effect to give some interaction */
+.services-right:hover {
+  transform: translateY(-10px) scale(1.02) rotateZ(1deg);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+/* Responsive: full width on small screens */
+@media (max-width: 768px) {
+  .services-right {
+    margin-top: 2rem;
+  }
 }

@@ -1,18 +1,101 @@
-.box {
-    background : aqua;
-    width :80px;
-    height :80px;
-    position : relative;
-    animation-name : myanimation;
-    animation-duration : 2s;
-    animation-iteration-count : 1;
-    animation-fill-mode: forwards;
+.about-content {
+  color: white;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-@keyframes myanimation{
-  0% {background-color : white;  border-radius : 0 0 0 0 ;}
-   25% {background-color :violet;  border-radius : 50% 0 0 0 ;}
-    50% {background-color :orange;  border-radius : 50% 50% 0 0 ; }
-     75% {background-color :pink;  border-radius : 50% 50% 50% 0 ;}
-      100% {background-color : aqua;  border-radius : 50% 50% 50% 50%;}
+.about-content h3 {
+  color: aqua;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.about-content h4 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #ffffffcc;
+}
+
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  color: #b9b9b9;
+}
+
+/* Box container on right side */
+.about-box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Box container */
+.about-box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  perspective: 800px;
+}
+
+/* Animated box */
+.box {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, cyan, black, #ffff);
+  border-radius: 50%;
+  animation: floatRotate 4s ease-in-out infinite, colorShift 6s linear infinite;
+  box-shadow: 0 0 15px cyan, 0 0 25px black, 0 0 35px #ffff;
+  transform-style: preserve-3d;
+}
+
+/* Floating + 3D rotation animation */
+@keyframes floatRotate {
+  0% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotateX(15deg) rotateY(15deg);
+  }
+  50% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+  75% {
+    transform: translateY(10px) rotateX(-15deg) rotateY(-15deg);
+  }
+  100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+/* Smooth color shift */
+@keyframes colorShift {
+  0% {
+    background: linear-gradient(45deg, cyan, black, #ffff);
+  }
+  33% {
+    background: linear-gradient(45deg, black, #ffff, cyan);
+  }
+  66% {
+    background: linear-gradient(45deg, #ffff, cyan, black);
+  }
+  100% {
+    background: linear-gradient(45deg, cyan, black, #ffff);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-text {
+    flex-direction: column;
+  }
+  .about-box-container {
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+  }
 }

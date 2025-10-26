@@ -1,3 +1,4 @@
+<!-- Canvas for pointer -->
 <div id="myCanvasContainer">
   <canvas id="myCanvas"></canvas>
 </div>
@@ -87,14 +88,11 @@
   </div>
 </nav>
 
-<div class="row">
+<!-- Right side of menu pages -->
+<div class="row justify-content-center align-items-center mb-10">
   <div class="col-lg-6 col-md-10 col-sm-12">
     <div class="shouldShowContent">
-      <div *ngIf="menu['ABOUT']">
-        <app-about></app-about>
-      </div>
-
-      <div *ngIf="menu['HOME']">
+      <div *ngIf="menu['HOME']" [@fadeAnimation]>
         <div class="content">
           <h1>{{ symbolOpeningTag }}</h1>
           <p>Hi</p>
@@ -109,10 +107,22 @@
         <h4 style="color: aqua">Frontend Developer / CMS Expert</h4>
         <h1 style="color: #ffffff; margin-top: 4%">{{ symbolClosingTag }}</h1>
       </div>
+
+      <div *ngIf="menu['ABOUT']" [@fadeAnimation]>
+        <app-about></app-about>
+      </div>
+
+      <div *ngIf="menu['SERVICES']" [@fadeAnimation]>
+        <app-srv></app-srv>
+      </div>
+
+      <div *ngIf="menu['CONTACT']" [@fadeAnimation]>
+        <app-contact></app-contact>
+      </div>
     </div>
   </div>
-  <div class="col-lg-6 col-md-2 col-sm-12">
-    <body *ngIf="menu['HOME']">
+  <div class="col-lg-6 col-md-2 col-sm-12 mb-10">
+    <body *ngIf="menu['HOME']" [@fadeAnimation]>
       <div class="card">
         <div class="boxshadow">
           <div class="main">
@@ -149,45 +159,76 @@
         </div>
       </div>
     </body>
-      <div class="wrap" *ngIf="menu['ABOUT']">
-        <div class="cube">
-          <div class="cube-front">
-            <h2>Frontend Developer</h2>
-            Experienced in building responsive and dynamic web applications. 
-            Passionate about crafting clean UI and optimizing
-            performance for seamless user experiences.
-          </div>
-          <div class="cube-back">
-            <h2>Mobile Developer</h2>
-            Skilled in cross-platform mobile development. I
-            create intuitive and performing apps that deliver consistent
-            experiences across iOS and Android.
-          </div>
-          <div class="cube-top">
-            <h2>Designer</h2>
+    <div class="wrap" *ngIf="menu['ABOUT']" [@fadeAnimation]>
+      <div class="cube">
+        <div class="cube-front cube-text">
+          <h2 class="cube-text">Frontend Developer</h2>
+          <p class="cube-text">
+            Experienced in building responsive and dynamic web applications.
+            Passionate about crafting clean UI and optimizing performance for
+            seamless user experiences.
+          </p>
+        </div>
+        <div class="cube-back">
+          <h2 class="cube-text">Mobile Developer</h2>
+          <p class="cube-text">
+            Skilled in cross-platform mobile development. I create intuitive and
+            performing apps that deliver consistent experiences across iOS and
+            Android.
+          </p>
+        </div>
+        <div class="cube-top">
+          <h2 class="cube-text">Designer</h2>
+          <p class="cube-text">
             Creative thinker with a strong eye for aesthetics and usability. I
             design interfaces that are not only visually appealing but also
             user-centered and accessible.
-          </div>
-          <div class="cube-bottom">
-            <h2>Marketing</h2>
+          </p>
+        </div>
+        <div class="cube-bottom">
+          <h2 class="cube-text">Marketing</h2>
+          <p class="cube-text">
             Strategic mindset with experience in digital marketing, branding,
             and user engagement. I bridge the gap between product and audience
             through compelling campaigns and storytelling.
-          </div>
-          <div class="cube-left">
-            <h2>Team player</h2>
-            I thrive in functional teams, collaborating with backend
-            developers, designers, and stakeholders to deliver full-featured
-            products that meet business goals.
-          </div>
-          <div class="cube-right">
-            <h2>Tech Enthusiast</h2>
+          </p>
+        </div>
+        <div class="cube-left">
+          <h2 class="cube-text">Team player</h2>
+          <p class="cube-text">
+            I thrive in functional teams, collaborating with backend developers,
+            designers, and stakeholders to deliver full-featured products that
+            meet business goals.
+          </p>
+        </div>
+        <div class="cube-right">
+          <h2 class="cube-text">Tech Enthusiast</h2>
+          <p class="cube-text">
             Constantly learning and exploring new technologies. I stay updated
             with industry trends and bring innovative solutions to every project
             I work on.
-          </div>
+          </p>
         </div>
       </div>
+    </div>
+    <div *ngIf="menu['SERVICES']" [@fadeAnimation]>
+      <section class="services-container">
+        <div class="services-grid">
+          <div class="services-right">
+            <h3>Why Choose My Services?</h3>
+            <p>
+              I provide expert solutions backed by experience in frontend
+              development, UI design, and performance optimization.
+            </p>
+            <ul>
+              <li>Responsive and modern UI</li>
+              <li>Clean, maintainable code</li>
+              <li>Optimized performance</li>
+              <li>Hands-on experience with Angular & TypeScript</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </div>

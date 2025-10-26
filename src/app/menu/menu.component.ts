@@ -5,35 +5,22 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MenuserviceService } from './menuservice.service';
-import { transition, trigger, useAnimation } from '@angular/animations';
-import { SidebarCloseAnimation, SidebarOpenAnimation } from './animations';
-
-const animationParams = {
-  menuWidth: '250px',
-  animationStyle: '500ms ease',
-};
+import { animate, style, transition, trigger } from '@angular/animations';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
-  encapsulation: ViewEncapsulation.None, // Use None to disable encapsulation
+  encapsulation: ViewEncapsulation.None,
   animations: [
-    trigger('sideMenu', [
+    trigger('fadeAnimation', [
       transition(':enter', [
-        useAnimation(SidebarOpenAnimation, {
-          params: {
-            menuWidth: animationParams.menuWidth,
-            animationStyle: animationParams.animationStyle,
-          },
-        }),
-      ]),
-      transition(':leave', [
-        useAnimation(SidebarCloseAnimation, {
-          params: {
-            ...animationParams,
-          },
-        }),
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate(
+          '400ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        ),
       ]),
     ]),
   ],
@@ -41,7 +28,7 @@ const animationParams = {
 export class MenuComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
-  items: any = ['HOME', 'ABOUT', 'SERVICES', 'BLOG', 'CONTACT'];
+  items: any = ['HOME', 'ABOUT', 'SERVICES', 'CONTACT'];
   symbolOpeningTag: string = '</>';
   symbolClosingTag: string = '<\\>';
   accordion: boolean = true;
@@ -77,63 +64,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private initCubeInteraction(): void {
-    const cube = document.querySelector('.cube') as HTMLElement;
-    if (!cube) {
-      console.error('Cube element not found!');
-      return;
-    }
-    let isDragging = false;
-    let previousMouseX = 0;
-    let previousMouseY = 0;
-    let rotationX = 0;
-    let rotationY = 0;
-
-    const startDrag = (e: MouseEvent | TouchEvent) => {
-      isDragging = true;
-      if (e instanceof MouseEvent) {
-        previousMouseX = e.clientX;
-        previousMouseY = e.clientY;
-      } else {
-        previousMouseX = e.touches[0].clientX;
-        previousMouseY = e.touches[0].clientY;
-      }
-      e.preventDefault();
-    };
-
-    const stopDrag = () => {
-      isDragging = false;
-    };
-
-    const onDrag = (e: MouseEvent | TouchEvent) => {
-      if (!isDragging) return;
-      let clientX = 0,
-        clientY = 0;
-      if (e instanceof MouseEvent) {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      } else {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-      }
-      const deltaX = clientX - previousMouseX;
-      const deltaY = clientY - previousMouseY;
-      previousMouseX = clientX;
-      previousMouseY = clientY;
-      rotationY += deltaX * 0.5;
-      rotationX -= deltaY * 0.5;
-      cube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-    };
-
-    cube.addEventListener('mousedown', startDrag);
-    cube.addEventListener('mouseup', stopDrag);
-    cube.addEventListener('mouseleave', stopDrag);
-    cube.addEventListener('mousemove', onDrag);
-    cube.addEventListener('touchstart', startDrag);
-    cube.addEventListener('touchend', stopDrag);
-    cube.addEventListener('touchmove', onDrag);
-  }
-
   ngAfterViewInit() {
     this.canvas = document.querySelector('#myCanvas')! as HTMLCanvasElement;
     this.ctx = this.canvas?.getContext('2d');
@@ -159,8 +89,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
         );
       });
     }
-
-    this.initCubeInteraction();
   }
 
   private updateMousePosition(eX: number, eY: number): void {
@@ -240,28 +168,32 @@ export class MenuComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Menu toogle -> Open/Close
-  toggleNav(): void {
-    this.accordion = !this.accordion;
-  }
-
   // Menu Object
   menu: any = {
     HOME: true,
     ABOUT: false,
     SERVICES: false,
-    BLOG: false,
     CONTACT: false,
   };
 
   menuTrigger(item: string): void {
-    // Reset all menu items to false
+    // Reset all menu items
     for (const key in this.menu) {
       if (this.menu.hasOwnProperty(key)) {
         this.menu[key] = false;
       }
     }
-    // Set the clicked menu item to true
+
+    // Activates clicked menu item
     this.menu[item] = true;
+
+    // Collapses offcanvas
+    const offcanvasEl = document.getElementById('offcanvasDarkNavbar');
+    if (offcanvasEl) {
+      const bsOffcanvas =
+        bootstrap.Offcanvas.getInstance(offcanvasEl) ||
+        new bootstrap.Offcanvas(offcanvasEl);
+      bsOffcanvas.hide();
+    }
   }
 }
